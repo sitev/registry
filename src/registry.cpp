@@ -1,4 +1,5 @@
 #include "core.h"
+#include "registry.h"
 
 #ifdef OS_WINDOWS
 
@@ -55,7 +56,7 @@ string Registry::getAnsiStringValue(String name) {
 	char *value = (char*)malloc(8192);
 
 	DWORD cbData = 8192;
-	LOGGER_SCREEN("getAnsiStringValue name = " + name);
+//	LOGGER_SCREEN("getAnsiStringValue name = " + name);
     int rez = RegQueryValueExA(hCurKey, name.to_string().c_str(), NULL, NULL, (LPBYTE)value, &cbData);
 	bool flag = rez == ERROR_SUCCESS;
 	string v = value;
